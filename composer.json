@@ -1,0 +1,14 @@
+{
+    "name": "root/drom_test_task",
+    "authors": [
+        {
+            "name": "denterke",
+            "email": "adgfq121519@gmail.com"
+        }
+    ],
+    "require": {
+        "doctrine/orm": "^2.5",
+        "doctrine/dbal": "^2.5",
+        "twig/twig": "1.*"
+    }
+}
