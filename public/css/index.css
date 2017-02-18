@@ -117,6 +117,24 @@ input[type="checkbox"] {
     border-top: 1px solid #e6e6e6;
 }
 
+.submit_button {
+    top: 150px;
+    width: 100%;
+    position: absolute;
+    background-color: rgba(175, 47, 47, 0.15);
+    border: none;
+    color: #4f4d49;
+    -webkit-text-rendering: optimizeLegibility;
+    -moz-text-rendering: optimizeLegibility;
+    text-rendering: optimizeLegibility;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+}
+
 label[for='toggle-all'] {
     display: none;
 }

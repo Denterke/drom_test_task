@@ -2,7 +2,11 @@
 
 class Route
 {
-    static function start()
+    function __construct($entityManager) {
+        $this->entityManager = $entityManager;
+    }
+
+    function start()
     {
         // контроллер и метод по умолчанию
         $controller_name = 'main';
@@ -19,7 +23,7 @@ class Route
             $action = $routes[2];
 
         // добавляем префиксы
-        $model_name = 'model_'.$controller_name;
+        $model_name = $controller_name;
         $controller_name = 'controller_'.$controller_name;
 
         // файл с классом модели
@@ -32,11 +36,13 @@ class Route
         // файл с классом контроллера
         $controller_file = strtolower($controller_name).'.php';
         $controller_path = '../controllers/'.$controller_file;
-        file_exists($controller_path) ? include '../controllers/'.$controller_file : Route::ErrorPage404();
+        file_exists($controller_path) ? include '../controllers/'.$controller_file : $this->ErrorPage404();
 
         // создаем экземпляр контроллера
         $controller = new $controller_name;
-        method_exists($controller, $action) ? $controller->$action() : Route::ErrorPage404();
+
+        //Две ужасные тернарки, одна на проверку существования метода, вторая на проверку GET || POST
+        method_exists($controller, $action) ? (($_SERVER['REQUEST_METHOD'] == 'POST') ? $controller->$action($this->entityManager) : $controller->$action()) : $this->ErrorPage404();
     }
 
     function ErrorPage404()
@@ -44,5 +50,10 @@ class Route
         include '../controllers/controller_main.php';
         $controller = new Controller_Main();
         $controller->page_404();
+    }
+
+    function ErrorPage405()
+    {
+        echo 1;
     }
 }

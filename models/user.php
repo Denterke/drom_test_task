@@ -10,7 +10,7 @@ class User
     protected $login;
     /** @Column(type="string") **/
     protected $password;
-    /** @Column(type="string") **/
+    /** @Column(type="string", nullable=true) **/
     protected $hash;
 
     /**
@@ -27,6 +27,19 @@ class User
     public function setLogin($login)
     {
         $this->login = $login;
+    }
+
+    public function getPassword()
+    {
+        return $this->password;
+    }
+
+    /**
+     * @param mixed $login
+     */
+    public function setPassword($password)
+    {
+        $this->password = md5($password);
     }
 
     /**
