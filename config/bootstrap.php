@@ -2,11 +2,11 @@
 use Doctrine\ORM\Tools\Setup;
 use Doctrine\ORM\EntityManager;
 
-require_once __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__ . '/../vendor/autoload.php';
 
 //Настройки DOCTRINE
 $isDevMode = true;
-$config = Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/../Entity"), $isDevMode);
+$config = Setup::createAnnotationMetadataConfiguration(array(__DIR__ . "/../models"), $isDevMode);
 
 $dbParams = array(
     'driver'   => 'pdo_mysql',
@@ -17,3 +17,9 @@ $dbParams = array(
 
 $entityManager = EntityManager::create($dbParams, $config);
 
+//Настройки ядра mvc
+require_once __DIR__ .'/../core/model.php';
+require_once __DIR__ .'/../core/view.php';
+require_once __DIR__ .'/../core/controller.php';
+require_once __DIR__ .'/../core/route.php';
+Route::start();

@@ -1,13 +1,6 @@
-<!doctype html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Ваш ToDo</title>
-    <link rel="stylesheet" href="./css/base.css">
-    <link rel="stylesheet" href="./css/index.css">
-</head>
-<body>
+{% extends "base.php" %}
+
+{% block main %}
 <section class="todoapp">
     <header class="header">
         <h1>ToDo</h1>
@@ -38,31 +31,4 @@
             </li>
         </ul>
     </section>
-    <!-- This footer should hidden by default and shown when there are todos -->
-    <footer class="footer">
-        <!-- This should be `0 items left` by default -->
-        <span class="todo-count"><strong>0</strong> активных</span>
-        <!-- Remove this if you don't implement routing -->
-        <ul class="filters">
-            <li>
-                <a class="selected" href="#/">Все</a>
-            </li>
-            <li>
-                <a href="#/active">Активные</a>
-            </li>
-            <li>
-                <a href="#/completed">Завершенные</a>
-            </li>
-        </ul>
-        <!-- Hidden if no completed items are left ↓ -->
-        <button class="clear-completed">Очистить</button>
-    </footer>
-</section>
-<footer class="info">
-    <p>Двойной клик для редактирования</p>
-</footer>
-<!-- Scripts here. Don't remove ↓ -->
-<script src="node_modules/todomvc-common/base.js"></script>
-<script src="js/app.js"></script>
-</body>
-</html>
+{% endblock %}
