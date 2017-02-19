@@ -25,12 +25,19 @@ class Controller_User extends Controller
         $this->view->generate('register.php');
     }
 
-    function store($entityManager)
+    function store($entityManager, $request)
     {
-        $this->model->setLogin($_POST['login']);
-        $this->model->setPassword($_POST['password']);
+        if ($this->model->validate($request)) {
+            $this->model->setLogin($request['login']);
+            $this->model->setPassword($request['password']);
 
-        $entityManager->persist($this->model);
-        $entityManager->flush();
+            $entityManager->persist($this->model);
+            $entityManager->flush();
+        }
+        else {
+            foreach ($this->model->getErrors() as $key => $value) {
+                echo $value, "<br>";
+            }
+        }
     }
 }

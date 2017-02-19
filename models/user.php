@@ -4,9 +4,13 @@
  **/
 class User
 {
+    private $errors;
+
     /** @Id @Column(type="integer") @GeneratedValue **/
     protected $id;
-    /** @Column(type="string") **/
+    /**
+     * @Column(type="string")
+     **/
     protected $login;
     /** @Column(type="string") **/
     protected $password;
@@ -35,7 +39,7 @@ class User
     }
 
     /**
-     * @param mixed $login
+     * @param mixed $password
      */
     public function setPassword($password)
     {
@@ -56,4 +60,35 @@ class User
         $this->id = $id;
     }
 
+    /**
+     * @PrePersist @PreUpdate
+     */
+    public function validate($request)
+    {
+        $this->errors = array();
+
+        $this->val_string($request['login'], 'логин');
+        $this->val_string($request['password'], 'пароль');
+
+        return (count($this->errors) > 0) ? false : true;
+}
+
+    public function getErrors()
+    {
+        return $this->errors;
+    }
+
+    public function val_string($field, $field_name) {
+        switch (true) {
+            case ($field == null):
+                $this->errors[$field_name] = 'Заполните поле: '.$field_name;
+                break;
+            case (strlen($field) <= 3):
+                $this->errors[$field_name] = 'Поле '.$field_name.' не может быть меньше 3 символов';
+                break;
+            case (strlen($$field) > 15):
+                $this->errors[$field_name] = 'Поле '.$field_name.' не может быть больше 15 символов';
+                break;
+        }
+    }
 }

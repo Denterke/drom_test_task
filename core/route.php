@@ -47,7 +47,7 @@ class Route
         $controller = new $controller_name;
 
         //Две ужасные тернарки, одна на проверку существования метода, вторая на проверку GET || POST
-        method_exists($controller, $action) ? (($_SERVER['REQUEST_METHOD'] == 'POST') ? $controller->$action($this->entityManager) : $controller->$action()) : $this->ErrorPage404();
+        method_exists($controller, $action) ? (($_SERVER['REQUEST_METHOD'] == 'POST') ? $controller->$action($this->entityManager, $_POST) : $controller->$action()) : $this->ErrorPage404();
     }
 
     function ErrorPage404()
