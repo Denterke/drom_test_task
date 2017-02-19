@@ -11,7 +11,7 @@ class Controller_Main extends Controller
     function index()
     {
         if (isset($_COOKIE['hash']))
-            $this->check_cookie() ? header('Location: /user') : $this->view->generate('main.php');
+            $this->check_cookie() ? $this->view->generate('main.php') : header('Location: /user');
         else header('Location: /user');
     }
 

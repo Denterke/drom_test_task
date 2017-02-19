@@ -78,14 +78,4 @@ class Controller_User extends Controller
 
         return $hash;
     }
-
-    function check_cookie() {
-        $user = $this->entityManager
-            ->getRepository('User')
-            ->findOneBy(array
-                ('hash' => $_COOKIE['hash'])
-            );
-
-        return $user ? true : false;
-    }
 }
