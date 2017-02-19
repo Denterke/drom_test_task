@@ -8,12 +8,18 @@
     <link rel="stylesheet" href="/../css/index.css">
 </head>
 <body>
+    {% block errors %}
+    {% endblock %}
+
     {% block main %}
     {% endblock %}
-<footer class="info">
-</footer>
 
-<script src="node_modules/todomvc-common/base.js"></script>
-<script src="js/app.js"></script>
+    <footer class="info">
+        {% block footer %}
+        {% endblock %}
+    </footer>
+
+    <script src="node_modules/todomvc-common/base.js"></script>
+    <script src="js/app.js"></script>
 </body>
 </html>

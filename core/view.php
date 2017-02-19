@@ -21,9 +21,9 @@ class View
         include '/../views/'.$template_view;
     }*/
 
-    function generate($template_view)
+    function generate($template_view, $data = null)
     {
-        echo $this->twig->render($template_view);
+        echo ($data) ?  $this->twig->render($template_view, array('data' => $data)) : $this->twig->render($template_view);
     }
 }
 

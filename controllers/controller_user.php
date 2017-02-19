@@ -27,17 +27,17 @@ class Controller_User extends Controller
 
     function store($entityManager, $request)
     {
-        if ($this->model->validate($request)) {
+        if ($this->model->validate($entityManager, $request)) {
             $this->model->setLogin($request['login']);
             $this->model->setPassword($request['password']);
 
             $entityManager->persist($this->model);
             $entityManager->flush();
+
+            header('Location: /');
         }
         else {
-            foreach ($this->model->getErrors() as $key => $value) {
-                echo $value, "<br>";
-            }
+            $this->view->generate('register.php', $this->model->getErrors());
         }
     }
 }

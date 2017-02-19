@@ -63,12 +63,19 @@ class User
     /**
      * @PrePersist @PreUpdate
      */
-    public function validate($request)
+    public function validate($entityManager, $request)
     {
         $this->errors = array();
 
         $this->val_string($request['login'], 'логин');
         $this->val_string($request['password'], 'пароль');
+
+        $user = $entityManager
+            ->getRepository('User')
+            ->findOneBy(array('login' => $request['login']));
+
+        if ($user)
+            $this->errors['логин'] = 'Пользователь с таким именем уже существует';
 
         return (count($this->errors) > 0) ? false : true;
 }
@@ -86,7 +93,7 @@ class User
             case (strlen($field) <= 3):
                 $this->errors[$field_name] = 'Поле '.$field_name.' не может быть меньше 3 символов';
                 break;
-            case (strlen($$field) > 15):
+            case (strlen($field) > 15):
                 $this->errors[$field_name] = 'Поле '.$field_name.' не может быть больше 15 символов';
                 break;
         }
