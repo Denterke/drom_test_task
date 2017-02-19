@@ -20,6 +20,9 @@
             <div>
                 <input class="submit_button" type="submit" value="Войти">
             </div>
+            <div>
+                <a href="/user/create" class="create_account_button">Создать аккаунт</a>
+            </div>
         </form>
     </section>
 </section>

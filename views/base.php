@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Ваш ToDo</title>
-    <link rel="stylesheet" type="text/css" href="/../css/base.css">
-    <link rel="stylesheet" href="/../css/index.css">
+    <link rel="stylesheet" type="text/css" href="/css/base.css">
+    <link rel="stylesheet" type="text/css" href="/css/index.css">
 </head>
 <body>
     {% block errors %}

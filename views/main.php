@@ -51,3 +51,7 @@
     </footer>
 </section>
 {% endblock %}
+
+{% block footer %}
+<a href="/user/out"> Выйти из аккаунта </a>
+{% endblock %}
