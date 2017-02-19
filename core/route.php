@@ -14,6 +14,11 @@ class Route
 
         $routes = explode('/', $_SERVER['REQUEST_URI']);
 
+        if (count($routes) > 3) {
+            $this->ErrorPage404();
+            exit;
+        }
+
         // получаем имя контроллера
         if (!empty($routes[1]))
             $controller_name = $routes[1];
@@ -47,7 +52,7 @@ class Route
 
     function ErrorPage404()
     {
-        include '../controllers/controller_main.php';
+        include __DIR__ . '/../controllers/controller_main.php';
         $controller = new Controller_Main();
         $controller->page_404();
     }
