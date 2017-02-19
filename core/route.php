@@ -2,6 +2,7 @@
 
 class Route
 {
+
     function __construct($entityManager) {
         $this->entityManager = $entityManager;
     }
@@ -44,21 +45,16 @@ class Route
         file_exists($controller_path) ? include '../controllers/'.$controller_file : $this->ErrorPage404();
 
         // создаем экземпляр контроллера
-        $controller = new $controller_name;
+        $controller = new $controller_name($this->entityManager);
 
         //Две ужасные тернарки, одна на проверку существования метода, вторая на проверку GET || POST
-        method_exists($controller, $action) ? (($_SERVER['REQUEST_METHOD'] == 'POST') ? $controller->$action($this->entityManager, $_POST) : $controller->$action()) : $this->ErrorPage404();
+        method_exists($controller, $action) ? (($_SERVER['REQUEST_METHOD'] == 'POST') ? $controller->$action($_POST) : $controller->$action()) : $this->ErrorPage404();
     }
 
     function ErrorPage404()
     {
         include __DIR__ . '/../controllers/controller_main.php';
-        $controller = new Controller_Main();
+        $controller = new Controller_Main($this->entityManager);
         $controller->page_404();
-    }
-
-    function ErrorPage405()
-    {
-        echo 1;
     }
 }

@@ -16,9 +16,9 @@
         <section class="main">
             <form action="/user/store" method="POST">
                 <input class="new-todo" name="login" placeholder="Введите логин" autofocus>
-                <input class="new-todo" name="password" placeholder="Введите пароль">
+                <input type = "password" class="new-todo" name="password" placeholder="Введите пароль">
                 <div>
-                    <input class="submit_button" type="submit" value="создать пользователя">
+                    <input class="submit_button" type="submit" value="Создать пользователя">
                 </div>
             </form>
         </section>

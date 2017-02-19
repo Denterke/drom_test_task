@@ -60,6 +60,18 @@ class User
         $this->id = $id;
     }
 
+    public function setHash($hash) {
+        $this->hash = $hash;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getHash()
+    {
+        return $this->hash;
+    }
+
     /**
      * @PrePersist @PreUpdate
      */
