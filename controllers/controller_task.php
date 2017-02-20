@@ -20,6 +20,7 @@ class Controller_Task extends Controller
             $task = array();
 
             foreach ($tasks_object as $task_object) {
+                $task['task_id'] = $task_object->getId();
                 $task['task'] = $task_object->getTask();
                 $task['is_complete'] = $task_object->getIsComplete();
                 array_push($tasks, $task);
@@ -27,7 +28,6 @@ class Controller_Task extends Controller
         }
 
             echo json_encode($tasks);
-
     }
 
     function store($request)
@@ -40,10 +40,19 @@ class Controller_Task extends Controller
             $this->entityManager->persist($this->model);
             $this->entityManager->flush();
 
-            header('Location: /');
+            echo $this->model->getId();
+
+            //header('Location: /');
         }
         else {
             $this->view->generate('main.php', $this->model->getErrors());
         }
+    }
+
+    function remove($request)
+    {
+        $task = $this->entityManager->getRepository('Task')->find($request['task_id']);
+        $this->entityManager->remove($task);
+        $this->entityManager->flush();
     }
 }
