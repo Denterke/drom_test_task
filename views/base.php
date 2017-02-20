@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,7 +19,8 @@
         {% endblock %}
     </footer>
 
-    <script src="node_modules/todomvc-common/base.js"></script>
-    <script src="js/app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+    {% block scripts %}
+    {% endblock %}
 </body>
 </html>

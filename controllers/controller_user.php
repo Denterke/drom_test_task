@@ -70,6 +70,7 @@ class Controller_User extends Controller
 
     function out() {
         setcookie("hash", "", time() - 60*60*24*30, '/');
+        setcookie("user_id", "", time()+60*60*24*30, '/');
         header('Location: /user');
     }
 

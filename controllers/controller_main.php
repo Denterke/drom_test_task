@@ -29,6 +29,12 @@ class Controller_Main extends Controller
                 ('hash' => $_COOKIE['hash'])
             );
 
-        return $user ? true : false;
+        if ($user) {
+            setcookie("user_id", $user->getId(), time()+60*60*24*30, '/');
+            return true;
+        }
+        else return false;
+
+        //return $user ? true : false;
     }
 }
