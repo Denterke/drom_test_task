@@ -144,6 +144,9 @@ input[type="checkbox"] {
     cursor: pointer;
 }
 
+.edit_task {
+
+}
 .create_account_button {
     -moz-appearance: button;
     appearance: button;

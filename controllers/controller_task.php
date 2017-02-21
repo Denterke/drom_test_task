@@ -13,7 +13,9 @@ class Controller_Task extends Controller
     {
         $tasks_object = $this->entityManager
             ->getRepository('Task')
-            ->findAll();
+            ->findBy(array
+                ('user_id' => $_COOKIE['user_id'])
+            );
 
         if ($tasks_object) {
             $tasks = array();
@@ -48,6 +50,21 @@ class Controller_Task extends Controller
             $this->view->generate('main.php', $this->model->getErrors());
         }
     }
+
+    function edit($request)
+    {
+        if ($this->model->validate($request)) {
+
+            $task = $this->entityManager->getRepository('Task')->find($request['task_id']);
+
+            $task->setTask($request['task']);
+            $this->entityManager->flush();
+        }
+        else {
+            $this->view->generate('main.php', $this->model->getErrors());
+        }
+    }
+
 
     function remove($request)
     {
