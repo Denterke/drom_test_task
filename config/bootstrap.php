@@ -18,7 +18,6 @@ $dbParams = array(
 $entityManager = EntityManager::create($dbParams, $config);
 
 //Настройки ядра mvc
-require_once __DIR__ .'/../core/model.php';
 require_once __DIR__ .'/../core/view.php';
 require_once __DIR__ .'/../core/controller.php';
 require_once __DIR__ .'/../core/route.php';

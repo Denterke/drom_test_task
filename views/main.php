@@ -17,27 +17,8 @@
     </header>
 
     <section class="main">
-        <input class="toggle-all" type="checkbox">
         <label for="toggle-all">Mark all as complete</label>
         <ul class="todo-list">
-            <!--
-            <li class="completed">
-                <div class="view">
-                    <input class="toggle" type="checkbox" checked>
-                    <label>Выполненное</label>
-                    <button class="destroy"></button>
-                </div>
-                <input class="edit" value="Create a TodoMVC template">
-            </li>
-            <li>
-                <div class="view">
-                    <input class="toggle" type="checkbox">
-                    <label>Купить единорога</label>
-                    <button class="destroy"></button>
-                </div>
-                <input class="edit" value="Rule the web">
-            </li>
-            -->
         </ul>
     </section>
 

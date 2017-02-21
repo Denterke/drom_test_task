@@ -35,6 +35,5 @@ class Controller_Main extends Controller
         }
         else return false;
 
-        //return $user ? true : false;
     }
 }

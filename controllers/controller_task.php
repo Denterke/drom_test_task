@@ -47,7 +47,6 @@ class Controller_Task extends Controller
     function edit($request)
     {
             $task = $this->entityManager->getRepository('Task')->find($request['task_id']);
-
             $task->setTask($request['task']);
             $this->entityManager->flush();
     }
@@ -58,7 +57,6 @@ class Controller_Task extends Controller
             $task->setIsComplete($request['state']);
             $this->entityManager->flush();
     }
-
 
     function remove($request)
     {

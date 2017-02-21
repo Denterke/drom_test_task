@@ -1,12 +1,5 @@
 <?php
 
-/**
- * Created by PhpStorm.
- * User: denter
- * Date: 18.02.17
- * Time: 19:05
- */
-
 class Controller_User extends Controller
 {
     function __construct($entityManager)
@@ -37,9 +30,8 @@ class Controller_User extends Controller
 
             header('Location: /user');
         }
-        else {
+        else
             $this->view->generate('register.php', $this->model->getErrors());
-        }
     }
 
     function auth($request)
@@ -63,9 +55,8 @@ class Controller_User extends Controller
             header('Location: /');
 
         }
-        else {
+        else
             $this->view->generate('login.php', array('ошибка' => 'Проверте правильность введенных данных!'));
-        }
     }
 
     function out() {

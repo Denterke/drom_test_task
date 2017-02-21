@@ -20,15 +20,15 @@ class Route
             exit;
         }
 
-        // получаем имя контроллера
+        // имя контроллера
         if (!empty($routes[1]))
             $controller_name = $routes[1];
 
-        // получаем имя метода
+        // имя метода
         if (!empty($routes[2]))
             $action = $routes[2];
 
-        // добавляем префиксы
+        // префикс к контроллеру
         $model_name = $controller_name;
         $controller_name = 'controller_'.$controller_name;
 
