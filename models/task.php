@@ -5,8 +5,6 @@
 class Task
 {
 
-    private $errors;
-
     /** @Id @Column(type="integer") @GeneratedValue **/
     protected $id;
     /** @Column(type="integer") **/
@@ -66,32 +64,6 @@ class Task
     public function setIsComplete($is_complete)
     {
         $this->is_complete = $is_complete;
-    }
-
-    public function validate($request)
-    {
-        $this->errors = array();
-
-        $task = $request['task'];
-
-        switch (true) {
-            case ($task == null):
-                $this->errors['задача'] = 'Заполните задачу';
-                break;
-            case (strlen($task) <= 3):
-                $this->errors['задача'] = 'Задача не может быть меньше 3 символов';
-                break;
-            case (strlen($task) > 100):
-                $this->errors['задача'] = 'Задача не может быть больше 100 символов';
-                break;
-        }
-
-        return (count($this->errors) > 0) ? false : true;
-    }
-
-    public function getErrors()
-    {
-        return $this->errors;
     }
 
 }

@@ -34,7 +34,6 @@ class Controller_Task extends Controller
 
     function store($request)
     {
-        if ($this->model->validate($request)) {
             $this->model->setTask($request['task']);
             $this->model->setIsComplete(false);
             $this->model->setUserId($_COOKIE['user_id']);
@@ -43,26 +42,21 @@ class Controller_Task extends Controller
             $this->entityManager->flush();
 
             echo $this->model->getId();
-
-            //header('Location: /');
-        }
-        else {
-            $this->view->generate('main.php', $this->model->getErrors());
-        }
     }
 
     function edit($request)
     {
-        if ($this->model->validate($request)) {
-
             $task = $this->entityManager->getRepository('Task')->find($request['task_id']);
 
             $task->setTask($request['task']);
             $this->entityManager->flush();
-        }
-        else {
-            $this->view->generate('main.php', $this->model->getErrors());
-        }
+    }
+
+    function toggle_complete($request)
+    {
+            $task = $this->entityManager->getRepository('Task')->find($request['task_id']);
+            $task->setIsComplete($request['state']);
+            $this->entityManager->flush();
     }
 
 

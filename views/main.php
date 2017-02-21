@@ -42,19 +42,18 @@
     </section>
 
     <footer class="footer">
-        <span class="todo-count"><strong>0</strong> активных</span>
+        <span class="todo-count"><strong id="uncomplete_tasks_count"></strong> активных</span>
         <ul class="filters">
             <li>
-                <a class="selected" href="#/">Все</a>
+                <a class="state all selected">Все</a>
             </li>
             <li>
-                <a href="#/active">Активные</a>
+                <a class="state uncompleted"">Активные</a>
             </li>
             <li>
-                <a href="#/completed">Завершенные</a>
+                <a class="state completed"">Завершенные</a>
             </li>
         </ul>
-        <button class="clear-completed">Очистить</button>
     </footer>
 
 </section>
